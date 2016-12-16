@@ -2,12 +2,12 @@
 
 # A simple script for setting up OSX dev environment.
 
-dev="$HOME/Developer"
+dev="$HOME/Documents/Projects"
 pushd .
 mkdir -p $dev
 cd $dev
 
-echo 'Enter new hostname of the machine (e.g. macbook-paulmillr)'
+echo 'Georges Macbook'
   read hostname
   echo "Setting new hostname to $hostname..."
   scutil --set HostName "$hostname"
@@ -31,7 +31,9 @@ if [[ `uname` == 'Darwin' ]]; then
     echo 'Installing Homebrew...'
       ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
       brew update
-      brew install htop mysql nginx node ruby
+      brew install htop mysql nginx nvm ruby python3
+      source $(brew --prefix nvm)/nvm.sh
+      nvm install --lts
   fi
 
   echo 'Tweaking OS X...'
@@ -61,27 +63,41 @@ echo 'Applying sublime config...'
     echo "Install Sublime Text http://www.sublimetext.com"
   fi
 
+echo 'Applying Atom config...'
+  st=$(pwd)/.atom
+  as="~/"
+  target="$HOME/Applications/Atom.app"
+  if [[ -d "$target" ]]; then
+    cp -r $st $as
+  else
+    echo "Install Atom"
+  fi
+
+
 open_apps() {
   echo 'Install apps:'
   echo 'Firefox:'
   open http://www.mozilla.org/en-US/firefox/new/
-  echo 'Dropbox:'
-  open https://www.dropbox.com
+  echo 'Google Drive:'
+  open https://www.google.com/drive/download/
   echo 'Chrome:'
   open https://www.google.com/intl/en/chrome/browser/
   echo 'Sequel Pro:'
   open http://www.sequelpro.com
   echo 'Skype:'
   open http://www.skype.com/en/download-skype/skype-for-computer/
-  echo 'Toggl:'
-  open https://www.toggl.com
-  echo 'Tower:'
-  open http://www.git-tower.com
+  echo 'Spotify':
+  open https://www.spotify.com/uk/download/other/
   echo 'Transmission:'
   open http://www.transmissionbt.com
   echo 'VLC:'
   open http://www.videolan.org/vlc/index.html
-  echo 'Pixelmator!'
+  echo 'Atom:'
+  open https://atom.io/
+  echo 'Sketch:'
+  open https://www.sketchapp.com/
+  echo 'Tunnelblink:'
+  open https://tunnelblick.net/downloads.html
 }
 
 echo 'Should I give you links for system applications (e.g. Skype, Tower, VLC)?'
