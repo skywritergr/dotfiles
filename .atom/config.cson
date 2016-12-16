@@ -1,0 +1,40 @@
+"*":
+  "atom-beautify":
+    general:
+      analytics: false
+    html:
+      beautify_on_save: true
+    js:
+      beautify_on_save: true
+  autosave:
+    enabled: true
+  "color-picker":
+    triggerKey: "H"
+  core:
+    ignoredNames: [
+      ".git"
+      ".svn"
+      ".DS_Store"
+    ]
+    telemetryConsent: "no"
+    themes: [
+      "one-dark-ui"
+      "oceanic-next"
+    ]
+  editor:
+    fontFamily: "Operator Mono"
+    fontSize: 16
+    invisibles: {}
+  "exception-reporting":
+    userId: "79a8a4af-bb1a-bd1b-f069-bd5c664a1928"
+  linter:
+    errorPanelHeight: 58
+  "linter-eslint":
+    globalNodePath: "/usr/local"
+    useGlobalEslint: true
+  metrics:
+    userId: "a1dba0fe3f0bbfc10e8f86e384f22ffb848bcde3"
+  "release-notes":
+    viewedVersion: "0.84.0"
+  welcome:
+    showOnStartup: false
