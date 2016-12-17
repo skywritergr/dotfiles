@@ -43,6 +43,11 @@ if [[ `uname` == 'Darwin' ]]; then
       nvm install --lts
   fi
 
+  echo 'Installing MacVim...'
+    brew install vim
+    brew install macvim --devel
+    brew linkapps
+
   echo 'Tweaking OS X...'
     source 'etc/osx.sh'
 
