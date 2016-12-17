@@ -24,24 +24,24 @@ echo 'Copying public key to clipboard. Paste it into your Github account...'
   [[ -f $pub ]] && cat $pub | pbcopy
   open 'https://github.com/account/ssh'
 
-echo 'ZSH installation...'
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  chsh -s /bin/zsh
-  brew install autojump
-  git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
-  cp $(pwd)/.zshrc ~/
-
 # If we on OS X, install homebrew and tweak system a bit.
 if [[ `uname` == 'Darwin' ]]; then
   which -s brew
   if [[ $? != 0 ]]; then
     echo 'Installing Homebrew...'
       ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+      gem install jekyll
       brew update
       brew install htop mysql nginx nvm ruby python3 yarn
       source $(brew --prefix nvm)/nvm.sh
       nvm install --lts
   fi
+
+  echo 'ZSH installation...'
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    chsh -s /bin/zsh
+    brew install autojump
+    cp $(pwd)/.zshrc ~/
 
   echo 'Installing MacVim...'
     brew install vim
