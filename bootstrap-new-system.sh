@@ -24,6 +24,13 @@ echo 'Copying public key to clipboard. Paste it into your Github account...'
   [[ -f $pub ]] && cat $pub | pbcopy
   open 'https://github.com/account/ssh'
 
+echo 'ZSH installation...'
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  chsh -s /bin/zsh
+  brew install autojump
+  git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+  cp $(pwd)/.zshrc ~/
+
 # If we on OS X, install homebrew and tweak system a bit.
 if [[ `uname` == 'Darwin' ]]; then
   which -s brew
@@ -31,7 +38,7 @@ if [[ `uname` == 'Darwin' ]]; then
     echo 'Installing Homebrew...'
       ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
       brew update
-      brew install htop mysql nginx nvm ruby python3
+      brew install htop mysql nginx nvm ruby python3 yarn
       source $(brew --prefix nvm)/nvm.sh
       nvm install --lts
   fi
@@ -44,6 +51,9 @@ if [[ `uname` == 'Darwin' ]]; then
     brew tap phinze/homebrew-cask
     brew install caskroom/cask/brew-cask
     brew cask install suspicious-package quicklook-json qlmarkdown qlstephen qlcolorcode
+
+  echo 'Installing iTerm2...'
+    brew cask install iterm2
 fi
 
 echo 'Symlinking config files...'
@@ -100,7 +110,7 @@ open_apps() {
   open https://tunnelblick.net/downloads.html
 }
 
-echo 'Should I give you links for system applications (e.g. Skype, Tower, VLC)?'
+echo 'Should I give you links for system applications (e.g. Skype, Atom, VLC)?'
 echo 'n / y'
 read give_links
 [[ "$give_links" == 'y' ]] && open_apps
