@@ -37,12 +37,6 @@ if [[ `uname` == 'Darwin' ]]; then
       nvm install --lts
   fi
 
-  echo 'ZSH installation...'
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-    chsh -s /bin/zsh
-    brew install autojump
-    cp $(pwd)/.zshrc ~/
-
   echo 'Installing MacVim...'
     brew install vim
     brew install macvim --devel
@@ -88,6 +82,11 @@ echo 'Applying Atom config...'
     echo "Install Atom"
   fi
 
+echo 'ZSH installation...'
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    chsh -s /bin/zsh
+    brew install autojump
+    cp $(pwd)/.zshrc ~/
 
 open_apps() {
   echo 'Install apps:'
