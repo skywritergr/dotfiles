@@ -2,7 +2,7 @@
 
 # A simple script for setting up OSX dev environment.
 
-dev="$HOME/Documents/Projects"
+dev="$HOME/Documents/Projects/dotfiles"
 pushd .
 mkdir -p $dev
 cd $dev
@@ -43,7 +43,7 @@ if [[ `uname` == 'Darwin' ]]; then
     brew linkapps
 
   echo 'Tweaking OS X...'
-    source 'etc/osx.sh'
+  source etc/osx.sh
 
   # http://github.com/sindresorhus/quick-look-plugins
   echo 'Installing Quick Look plugins...'
@@ -56,7 +56,7 @@ if [[ `uname` == 'Darwin' ]]; then
 fi
 
 echo 'Symlinking config files...'
-  source 'bin/symlink-dotfiles.sh'
+  source bin/symlink-dotfiles.sh
 
 echo 'Applying sublime config...'
   st=$(pwd)/sublime/packages
